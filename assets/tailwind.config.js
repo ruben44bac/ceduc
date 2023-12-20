@@ -16,7 +16,11 @@ module.exports = {
       colors: {
         prin: "#01253B",
         secu: "#652f13",
-        extra: "#ded5cf"
+        secu_hover: "#b38471",
+        extra: "#DCD5CF",
+        extra_1: "#131F75",
+        extra_gold_1: "#AA6115",
+        extra_gold_2: "#EABF57"
       }
     },
   },
