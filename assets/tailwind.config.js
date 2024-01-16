@@ -15,6 +15,7 @@ module.exports = {
     extend: {
       colors: {
         prin: "#01253B",
+        prin_1: "#2e4458",
         secu: "#652f13",
         secu_hover: "#b38471",
         extra: "#DCD5CF",

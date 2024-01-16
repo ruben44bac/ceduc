@@ -1,82 +1,42 @@
-defmodule CeducWeb.HomeLive.Index do
+defmodule CeducWeb.EducationLive.Index do
   @moduledoc """
-  Module for HomeLive.Index
+  Module for EducationLive.Index
   """
   use CeducWeb, :live_view
 
   @impl true
   def mount(_params, _session, socket) do
-    licenciaturas = get_licenciatura()
-    masters = get_masters()
-    doctors = get_doctors()
-
     {:ok,
      assign(socket,
-       page_title: "Home",
        loading: true,
-       banner_position: 1,
-       last_banner_position: 0,
-       licenciaturas: licenciaturas,
-       masters: masters,
-       doctors: doctors,
+       list: [],
        loading: false,
-       section_id: 1,
-       short_list: get_short_list(licenciaturas),
-       banners: get_banners()
+       section_id: 2,
+       short_list: get_short_list([])
      )}
   end
 
-  def handle_event("change_banner", %{"type" => type}, socket) do
-    banner_position =
-      if type == "-1" do
-        socket.assigns.banner_position - 1
-      else
-        socket.assigns.banner_position + 1
-      end
-      |> case do
-        0 -> 5
-        6 -> 1
-        val -> val
+  @impl true
+  def handle_params(%{"type" => type}, _url, socket) do
+    {list, page_title} =
+      case type do
+        "maestria" -> {get_masters(), "Maestría"}
+        "doctorado" -> {get_doctors(), "Doctorado"}
+        _ -> {get_licenciatura(), "Licenciatura"}
       end
 
-    {:noreply,
-     assign(socket,
-       banner_position: banner_position,
-       last_banner_position: socket.assigns.banner_position
-     )}
+    {:noreply, assign(socket, list: list, page_title: page_title)}
   end
 
-  def handle_event("select_banner", %{"item" => id_string}, socket) do
-    id = String.to_integer(id_string)
-
-    last_banner =
-      case id - 1 do
-        0 -> 5
-        6 -> 1
-        val -> val
+  def build_class_list(list) do
+    {r_cols, cols} =
+      case length(list) do
+        2 -> {"2", "1"}
+        x when x < 6 -> {"3", "1"}
+        _ -> {"4", "2"}
       end
 
-    {:noreply,
-     assign(socket,
-       banner_position: id,
-       last_banner_position: last_banner
-     )}
-  end
-
-  def get_banner_class(banner, banner_position, _last_banner_position) do
-    if banner.id == banner_position do
-      "duration-700 ease-in-out absolute inset-0 transition-transform transform translate-x-0 z-20"
-    else
-      "duration-700 ease-in-out absolute inset-0 transition-transform transform translate-x-full z-10"
-    end
-  end
-
-  def get_class_banner_button(id, banner_position) do
-    if id == banner_position do
-      "w-3 h-3 rounded-full bg-prim hover:bg-white border-2 border-white"
-    else
-      "w-3 h-3 rounded-full bg-slate-300 hover:bg-white"
-    end
+    "mx-auto grid max-w-2xl auto-rows-fr grid-cols-#{cols} gap-2 md:gap-8 mt-12 lg:mx-0 lg:max-w-none lg:grid-cols-#{r_cols}"
   end
 
   defp get_short_list(original_list) do
@@ -89,51 +49,6 @@ defmodule CeducWeb.HomeLive.Index do
       list: list,
       original_list: original_list
     }
-  end
-
-  defp get_banners do
-    [
-      %{
-        img: "/images/school_1.jpg",
-        title: "El mejor viaje para el aprendizaje comienza aquí",
-        content: "Selecciona entre nuestras diferentes carreras",
-        with_button: false,
-        action: nil,
-        id: 1
-      },
-      %{
-        img: "/images/licenciatura.jpg",
-        title: "Licenciatura",
-        content: "Estudia en la escuela privada más sofisticada de la Zona Metropolitana.",
-        with_button: false,
-        action: nil,
-        id: 2
-      },
-      %{
-        img: "/images/maestria.jpg",
-        title: "Maestría",
-        content: "Gana hasta 90% más estudiando una maestría ¡Alcanza tus metas!",
-        with_button: false,
-        action: nil,
-        id: 3
-      },
-      %{
-        img: "/images/doctorado.jpg",
-        title: "Doctorado",
-        content: "Eligen entre nuestras grandes ofertas de doctorado y pasa al siguiente nivel",
-        with_button: false,
-        action: nil,
-        id: 4
-      },
-      %{
-        img: "/images/mas.jpg",
-        title: "Más",
-        content: "Deja tus datos y nosotros te daremos la atención personalizada que requieres",
-        with_button: true,
-        action: "#contact",
-        id: 5
-      }
-    ]
   end
 
   defp get_licenciatura do

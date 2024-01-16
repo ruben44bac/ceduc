@@ -18,6 +18,7 @@ defmodule CeducWeb.Router do
     pipe_through :browser
 
     live "/", HomeLive.Index, :index
+    live "/oferta-academica/:type", EducationLive.Index, :index
   end
 
   # Other scopes may use custom stacks.
