@@ -10,45 +10,45 @@ defmodule CeducWeb.EducationLive.Index do
      assign(socket,
        loading: false,
        section_id: 2,
-       short_list: get_short_list([])
+       list_type: 0
      )}
   end
 
   @impl true
-  def handle_params(%{"type" => type}, _url, socket) do
-    {list, page_title} =
+  def handle_params(%{"type" => type} = args, _url, socket) do
+    {org_list, page_title} =
       case type do
         "maestria" -> {get_masters(), "Maestría"}
         "doctorado" -> {get_doctors(), "Doctorado"}
         _ -> {get_licenciatura(), "Licenciatura"}
       end
 
-    {:noreply, assign(socket, list: list, page_title: page_title)}
-  end
+    list_type =
+      args
+      |> Map.get("list_type", "0")
+      |> String.to_integer()
+      |> IO.inspect()
 
-  def build_class_list(list) do
-    IO.inspect(length(list), label: "whats -> ")
-
-    {r_cols, cols} =
-      case length(list) do
-        2 -> {"2", "1"}
-        x when x < 6 -> {"3", "1"}
-        _ -> {"4", "2"}
+    list =
+      if list_type == 0 do
+        org_list
+      else
+        Enum.filter(org_list, &(&1.type == list_type))
       end
 
-    "mx-auto grid max-w-2xl auto-rows-fr grid-cols-#{cols} gap-2 md:gap-4 mt-12 md:mx-0 md:max-w-none md:grid-cols-#{r_cols}"
+    {:noreply,
+     assign(socket, list: list, org_list: org_list, page_title: page_title, list_type: list_type)}
   end
 
-  defp get_short_list(original_list) do
-    list =
-      original_list
-      |> Enum.chunk_every(3)
-      |> List.first()
+  @impl true
+  def handle_event("filter", %{"type" => "0"}, socket) do
+    {:noreply, assign(socket, list: socket.assigns.org_list, list_type: 0)}
+  end
 
-    %{
-      list: list,
-      original_list: original_list
-    }
+  def handle_event("filter", %{"type" => type}, socket) do
+    type = String.to_integer(type)
+    list = Enum.filter(socket.assigns.org_list, &(&1.type == type))
+    {:noreply, assign(socket, list: list, list_type: type)}
   end
 
   defp get_licenciatura do
@@ -58,133 +58,152 @@ defmodule CeducWeb.EducationLive.Index do
         name: "Derecho",
         description: "",
         years: "4 años",
-        image: "/images/"
+        image: "/images/",
+        type: 1
       },
       %{
         id: 2,
         name: "Administración de Empresas",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 2
       },
       %{
         id: 3,
         name: "Pedagogía",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 1
       },
       %{
         id: 4,
         name: "Psicología",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 1
       },
       %{
         id: 5,
         name: "Criminalística",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 1
       },
       %{
         id: 6,
         name: "Mercadotecnia",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 2
       },
       %{
         id: 7,
         name: "Relaciones Internacionales",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 1
       },
       %{
         id: 8,
         name: "Lenguas Inglesas",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 1
       },
       %{
         id: 9,
         name: "Seguridad Pública",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 1
       },
       %{
         id: 10,
         name: "Contabilidad",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 2
       },
       %{
         id: 11,
         name: "Teología",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 1
       },
       %{
         id: 12,
         name: "Teología Yoruba y Ciencias Ocultas",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 1
       },
       %{
         id: 13,
         name: "Ingeniería Civil",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 4
       },
       %{
         id: 14,
         name: "Ingeniería Industrial",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 4
       },
       %{
         id: 15,
         name: "Ingeniería Mecánica",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 4
       },
       %{
         id: 16,
         name: "Arquitectura",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 3
       },
       %{
         id: 17,
         name: "Diseño Gráfico",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 3
       },
       %{
         id: 18,
         name: "Ingeniería en Sistemas Computacionales y Programador",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 4
       },
       %{
         id: 19,
         name: "Diseñador de Videojuegos",
         description: "",
         years: "4 años",
-        image: ""
+        image: "",
+        type: 3
       }
     ]
   end

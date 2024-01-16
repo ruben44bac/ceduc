@@ -110,34 +110,34 @@ defmodule CeducWeb.Landing.HeaderComponent do
                       >
                         <li>
                           <a
-                            href="/oferta-academica/licenciatura"
+                            href="/oferta-academica/licenciatura/1"
                             class="block px-4 py-2 hover:bg-prin_1"
                           >
-                            Licenciaturas
+                            Ciencias Sociales
                           </a>
                         </li>
                         <li>
                           <a
-                            href="/oferta-academica/licenciatura"
+                            href="/oferta-academica/licenciatura/2"
                             class="block px-4 py-2 hover:bg-prin_1"
                           >
-                            Ingenierías
+                            Negocios
                           </a>
                         </li>
                         <li>
                           <a
-                            href="/oferta-academica/licenciatura"
+                            href="/oferta-academica/licenciatura/3"
                             class="block px-4 py-2 hover:bg-prin_1"
                           >
-                            Diseño
+                            Diseño, Arte y Arquitectura
                           </a>
                         </li>
                         <li>
                           <a
-                            href="/oferta-academica/licenciatura"
+                            href="/oferta-academica/licenciatura/4"
                             class="block px-4 py-2 hover:bg-prin_1"
                           >
-                            Más...
+                            Ingeniería
                           </a>
                         </li>
                       </ul>
@@ -156,7 +156,9 @@ defmodule CeducWeb.Landing.HeaderComponent do
                 </ul>
               </div>
             </div>
-            <a href="/" class="cursor-pointer whitespace-nowrap py-3 hover:bg-prin w-48">Admisión</a>
+            <a href="/about" class="cursor-pointer whitespace-nowrap py-3 hover:bg-prin w-48">
+              CEDUC
+            </a>
             <a href="/blog" class="cursor-pointer whitespace-nowrap py-3 hover:bg-prin w-48">Blog</a>
             <a href="#contact" class="cursor-pointer whitespace-nowrap py-3 hover:bg-prin w-48">
               Contacto
@@ -176,7 +178,7 @@ defmodule CeducWeb.Landing.HeaderComponent do
     {:ok, assign(socket, sections: sections(attrs.section_id))}
   end
 
-  defp sections(id) do
+  defp sections(_id) do
     []
   end
 end

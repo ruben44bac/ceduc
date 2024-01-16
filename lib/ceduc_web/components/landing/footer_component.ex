@@ -4,6 +4,13 @@ defmodule CeducWeb.Landing.FooterComponent do
   def render(assigns) do
     ~H"""
     <footer id="contact">
+      <a
+        target="_blank"
+        class="fixed z-40 bottom-0 right-0 mb-5 mr-5 rounded-full w-12 h-12 bg-green-400 "
+        href="https://api.whatsapp.com/send?phone=525512345678&text=Hola%2C%20estoy%20en%20la%20p%C3%A1gina%20de%20internet%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n"
+      >
+        <img src="/images/whatsapp.png" class="w-12 h-12" />
+      </a>
       <div class="relative isolate bg-prin mt-16 md:mt-40">
         <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
           <div class="relative px-6 sm:pt-32 lg:static lg:px-8 py-10">

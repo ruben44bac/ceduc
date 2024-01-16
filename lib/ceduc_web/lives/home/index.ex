@@ -25,6 +25,7 @@ defmodule CeducWeb.HomeLive.Index do
      )}
   end
 
+  @impl true
   def handle_event("change_banner", %{"type" => type}, socket) do
     banner_position =
       if type == "-1" do
@@ -101,7 +102,7 @@ defmodule CeducWeb.HomeLive.Index do
         id: 1
       },
       %{
-        img: "/images/licenciatura.jpg",
+        img: "/images/banner_2.jpg",
         title: "Licenciatura",
         content: "Estudia en la escuela privada más sofisticada de la Zona Metropolitana.",
         with_button: false,
