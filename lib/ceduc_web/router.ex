@@ -18,6 +18,8 @@ defmodule CeducWeb.Router do
     pipe_through :browser
 
     live "/", HomeLive.Index, :index
+    live "/blog", BlogLive.Index, :index
+    live "/becas", ScholarshipLive.Index, :index
     live "/oferta-academica/:type", EducationLive.Index, :index
   end
 

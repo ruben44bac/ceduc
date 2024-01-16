@@ -1,0 +1,67 @@
+<.live_component module={CeducWeb.Landing.HeaderComponent} id="sidebar" section_id={@section_id} />
+<div class="bg-slate-50 w-full min-h-[70vh] mt-32">
+  <div class="w-full flex pt-10">
+    <div class="w-10/12 mx-auto">
+
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <%= @page_title %>
+        </h2>
+        <p class="mt-2 text-lg leading-8 text-gray-600">Descubre cosas nuevas</p>
+      </div>
+      <div class="w-full inline-flex items-top mt-10">
+        <div class="w-8/12 px-4">
+          <%= for item <- @list do %>
+            <div
+              class="w-full mb-4 border p-4 border-slate-200 inline-flex items-top bg-white rounded-lg cursor-pointer">
+              <div class="w-40 h-40 ">
+                <img src={item.img_mini} class="rounded-lg h-full w-full object-cover">
+              </div>
+              <div class="w-10/12 ml-4">
+                <label class="block text text-slate-500 text-sm font-bold">
+                  <%= NaiveDateTime.to_string(item.available_date) %>
+                </label>
+                <label class="text-2xl font-bold text-slate-800 block mt-2">
+                  <%= item.title %>
+                </label>
+                <label class="text-base font-medium text-slate-700 block">
+                  <%= item.subtitle %>
+                </label>
+
+                <div class="block text-sm mt-4 inline-flex items-center">
+                  <img src={item.user.avatar} class="rounded-full h-8 w-8 object-cover">
+                  <label class="ml-3 font-bold text-slate-700">
+                    <%= item.user.name %>
+                      <%= item.user.first_surname %>
+                        <%= item.user.second_surname %>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <% end %>
+        </div>
+        <div class="w-4/12 px-2">
+          <div class="w-full">
+            <div class="relative">
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  fill="currentColor" viewBox="0 0 512 512">
+                  <path
+                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                </svg>
+              </div>
+              <input type="text" id="input-group-1"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  "
+                placeholder="" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+<.live_component module={CeducWeb.Landing.FooterComponent} id="footer_component" />

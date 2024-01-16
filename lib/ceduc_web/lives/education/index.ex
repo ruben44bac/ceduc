@@ -8,8 +8,6 @@ defmodule CeducWeb.EducationLive.Index do
   def mount(_params, _session, socket) do
     {:ok,
      assign(socket,
-       loading: true,
-       list: [],
        loading: false,
        section_id: 2,
        short_list: get_short_list([])
@@ -29,6 +27,8 @@ defmodule CeducWeb.EducationLive.Index do
   end
 
   def build_class_list(list) do
+    IO.inspect(length(list), label: "whats -> ")
+
     {r_cols, cols} =
       case length(list) do
         2 -> {"2", "1"}
@@ -36,7 +36,7 @@ defmodule CeducWeb.EducationLive.Index do
         _ -> {"4", "2"}
       end
 
-    "mx-auto grid max-w-2xl auto-rows-fr grid-cols-#{cols} gap-2 md:gap-8 mt-12 lg:mx-0 lg:max-w-none lg:grid-cols-#{r_cols}"
+    "mx-auto grid max-w-2xl auto-rows-fr grid-cols-#{cols} gap-2 md:gap-4 mt-12 md:mx-0 md:max-w-none md:grid-cols-#{r_cols}"
   end
 
   defp get_short_list(original_list) do

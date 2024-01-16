@@ -13,7 +13,6 @@ defmodule CeducWeb.HomeLive.Index do
     {:ok,
      assign(socket,
        page_title: "Home",
-       loading: true,
        banner_position: 1,
        last_banner_position: 0,
        licenciaturas: licenciaturas,
@@ -94,7 +93,7 @@ defmodule CeducWeb.HomeLive.Index do
   defp get_banners do
     [
       %{
-        img: "/images/school_1.jpg",
+        img: "/images/banner_1.jpg",
         title: "El mejor viaje para el aprendizaje comienza aquí",
         content: "Selecciona entre nuestras diferentes carreras",
         with_button: false,
