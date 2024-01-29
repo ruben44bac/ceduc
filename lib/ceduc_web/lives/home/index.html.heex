@@ -1,8 +1,8 @@
 <.live_component module={CeducWeb.Landing.HeaderComponent} id="sidebar" section_id={@section_id} />
-<div class="bg-slate-50 w-full min-h-[70vh] mt-24">
+<div class="bg-slate-50 w-full min-h-[20vh] md:min-h-[70vh] mt-20 md:mt-24">
   <div id="indicators-carousel" class="relative w-full" data-carousel="static">
     <!-- Carousel wrapper -->
-    <div class="relative h-[45vh] md:h-[80vh] overflow-hidden rounded-lg z-20">
+    <div class="relative h-[20vh] md:h-[80vh] overflow-hidden rounded-lg z-20">
       <%= for item <- @banners do %>
         <div class={get_banner_class(item, @banner_position, @last_banner_position)} data-carousel-item="active">
           <img class="w-full h-auto" src={item.img}>
@@ -11,7 +11,7 @@
 
     </div>
     <!-- Slider indicators -->
-    <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-20 left-1/2">
+    <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 md:bottom-20 left-1/2">
       <%= for item <- @banners do %>
         <button phx-click="select_banner" phx-value-item={item.id} type="button" class={get_class_banner_button(item.id,
           @banner_position)} aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
@@ -50,7 +50,7 @@
 
 
 
-<div class="w-full flex py-10 md:py-10">
+<div class="w-full flex py-2 md:py-10">
   <div class="mx-auto w-11/12 md:w-10/12">
     <div class="w-full mt-10">
       <label class="block text-center font-bold text-prin text-2xl">
@@ -62,83 +62,42 @@
       </label>
       <div class="w-full grid grid-cols-1 md:grid-cols-4 gap-6 mt-10">
         <div class="w-full rounded-lg border border-prin p-6">
-          <label class="text-xl font-bold text-prin block">Preparatoria</label>
+          <label class="text-xl font-bold text-prin block">Precio</label>
           <ul class="list-disc list-inside text-slate-800 mt-10">
-            <li class="mt-2">Más de 200 mil egresados</li>
-            <li class="mt-2">Nuestros egresados ganan 29% más que la media nacional</li>
-            <li class="mt-2">95% de nuestros recién egresados cuentan con trabajo permanente</li>
+            <li class="mt-2">Precios totalmente accesibles.</li>
+            <li class="mt-2">Opción a becas académicas.</li>
+            <li class="mt-2">Modalidades de estudio que te permitirán trabajar y estudiar al mismo tiempo.</li>
           </ul>
 
-          <div class="w-full mt-20">
-            <button
-              class="w-full py-2 rounded-lg inline-flex items-center text-white bg-gradient-to-r from-extra_gold_1 to-extra_gold_1">
-              <span class="mr-2 text-sm font-bold ml-auto">Ver más</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-4 h-4 mr-auto" viewBox="0 0 448 512">
-                <path
-                  d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z" />
-              </svg>
-            </button>
-          </div>
         </div>
 
         <div class="w-full rounded-lg border border-prin p-6">
-          <label class="text-xl font-bold text-prin block">Artes y diseño</label>
+          <label class="text-xl font-bold text-prin block">Oferta académica</label>
           <ul class="list-disc list-inside text-slate-800 mt-10">
-            <li class="mt-2">Más de 200 mil egresados</li>
-            <li class="mt-2">Nuestros egresados ganan 29% más que la media nacional</li>
-            <li class="mt-2">95% de nuestros recién egresados cuentan con trabajo permanente</li>
+            <li class="mt-2">Innovación en planes de estudio.</li>
+            <li class="mt-2">Más de 20 licenciaturas y posgrados.</li>
+            <li class="mt-2">RVOE 100% avalado por la SEP.</li>
+            <li class="mt-2">Pase directo de preparatoria a universidad</li>
           </ul>
+        </div>
 
-          <div class="w-full mt-20">
-            <button
-              class="w-full py-2 rounded-lg inline-flex items-center text-white bg-gradient-to-r from-extra_gold_1 to-extra_gold_1">
-              <span class="mr-2 text-sm font-bold ml-auto">Ver más</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-4 h-4 mr-auto" viewBox="0 0 448 512">
-                <path
-                  d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z" />
-              </svg>
-            </button>
-          </div>
+        <div class="w-full rounded-lg border border-prin p-6">
+          <label class="text-xl font-bold text-prin block">Innovación</label>
+          <label class="block text-slate-800">Carreras nuevas, como:</label>
+          <ul class="list-disc list-inside text-slate-800 mt-6">
+            <li class="mt-2">Teología yoruba y ciencias ocultas.</li>
+            <li class="mt-2">Seguridad pública.</li>
+            <li class="mt-2">Diseño de videojuegos.</li>
+          </ul>
         </div>
 
         <div class="w-full rounded-lg border border-prin p-6">
           <label class="text-xl font-bold text-prin block">Calidad educativa</label>
           <ul class="list-disc list-inside text-slate-800 mt-10">
-            <li class="mt-2">Más de 200 mil egresados</li>
-            <li class="mt-2">Nuestros egresados ganan 29% más que la media nacional</li>
-            <li class="mt-2">95% de nuestros recién egresados cuentan con trabajo permanente</li>
+            <li class="mt-2">Sello en WFUcA UNESCO.</li>
+            <li class="mt-2">Plantilla de docentes reconocidos.</li>
+            <li class="mt-2">Instalaciones de vanguardia.</li>
           </ul>
-
-          <div class="w-full mt-20">
-            <button
-              class="w-full py-2 rounded-lg inline-flex items-center text-white bg-gradient-to-r from-extra_gold_1 to-extra_gold_1">
-              <span class="mr-2 text-sm font-bold ml-auto">Ver más</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-4 h-4 mr-auto" viewBox="0 0 448 512">
-                <path
-                  d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="w-full rounded-lg border border-prin p-6">
-          <label class="text-xl font-bold text-prin block">Prestigio</label>
-          <ul class="list-disc list-inside text-slate-800 mt-10">
-            <li class="mt-2">Más de 200 mil egresados</li>
-            <li class="mt-2">Nuestros egresados ganan 29% más que la media nacional</li>
-            <li class="mt-2">95% de nuestros recién egresados cuentan con trabajo permanente</li>
-          </ul>
-
-          <div class="w-full mt-20">
-            <button
-              class="w-full py-2 rounded-lg inline-flex items-center text-white bg-gradient-to-r from-extra_gold_1 to-extra_gold_1">
-              <span class="mr-2 text-sm font-bold ml-auto">Ver más</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-4 h-4 mr-auto" viewBox="0 0 448 512">
-                <path
-                  d="M470.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 256 265.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160zm-352 160l160-160c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L210.7 256 73.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0z" />
-              </svg>
-            </button>
-          </div>
         </div>
 
       </div>
@@ -185,8 +144,7 @@
           <h3 class="font-semibold text-white ml-2 text-2xl">Presencial</h3>
         </div>
         <div class="text-base leading-7">
-          <p class="mt-2 text-gray-300">Consectetur vel non. Rerum ut consequatur nobis unde. Enim est quo corrupti
-            consequatur.</p>
+          <p class="mt-2 text-gray-300">Pepárate de la mejor forma en alguno de nuestros planteles.</p>
         </div>
       </div>
       <div class="block gap-x-4 rounded-xl bg-white/5 p-6 ring-1 ring-inset ring-white/10">
@@ -204,11 +162,12 @@
                 d="M3251 7365 c-295 -66 -505 -231 -639 -500 -132 -265 -165 -627 -86 -945 107 -431 398 -701 808 -750 483 -57 893 220 1031 697 78 269 71 618 -19 872 -111 315 -332 529 -632 612 -103 28 -365 36 -463 14z m386 -231 c284 -63 481 -306 539 -664 23 -141 14 -363 -20 -494 -78 -298 -253 -493 -506 -562 -89 -25 -299 -25 -390 -1 -123 33 -207 82 -302 177 -74 75 -93 102 -137 191 -193 399 -122 942 157 1201 162 150 413 208 659 152z" />
             </g>
           </svg>
-          <h3 class="font-semibold text-white ml-2 text-2xl">Híbrida</h3>
+          <h3 class="font-semibold text-white ml-2 text-2xl">Ejecutiva</h3>
         </div>
 
         <div class="text-base leading-7">
-          <p class="mt-2 text-gray-300">Quod possimus sit modi rerum exercitationem quaerat atque tenetur ullam.</p>
+          <p class="mt-2 text-gray-300">Acomoda tus clases de la forma que prefieras, puedes tomar clases online y de
+            manera presencial.</p>
         </div>
       </div>
       <div class="block gap-x-4 rounded-xl bg-white/5 p-6 ring-1 ring-inset ring-white/10">
@@ -240,8 +199,8 @@
           <h3 class="font-semibold text-white ml-2 text-2xl">Online</h3>
         </div>
         <div class="text-base leading-7">
-          <p class="mt-2 text-gray-300">Ratione et porro eligendi est sed ratione rerum itaque. Placeat accusantium
-            impedit eum odit.</p>
+          <p class="mt-2 text-gray-300">Cursa alguna carrera desde la comodidad de tu hogar u oficina de forma remota, a
+            través de nuestras clases online.</p>
         </div>
       </div>
     </div>
@@ -275,19 +234,33 @@
     <div
       class="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm leading-6 text-gray-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
       <figure class="rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5 sm:col-span-2 xl:col-start-2 xl:row-end-1">
-        <blockquote class="p-6 leading-7 tracking-tight text-gray-900 sm:p-12 sm:text-lg sm:leading-8">
-          <p><span class="font-semibold">Licenciada en derecho</span> - Egresado de la Universidad Nacional Autónoma de
-            México, 10 años como
-            docente en la Facultad de Derecho en ciudad universitaria.</p>
+        <blockquote class="p-6 leading-7 tracking-tight text-gray-900 sm:p-12 sm:text-base sm:leading-8">
+          <ul class="list-disc list-inside text-slate-800 ">
+            <li>
+              <label><b>Doctorado en Filosofía,</b> Pontificia Universidad Católica de Chile.</label>
+              <label>Tesis: Una reconstrucción formal de la lógica de términos de Amonio Hermia.</label>
+              <label>Jurado: Prof. Manuel Correia Machuca, Prof. José Tomás Alvarado Marambio & Prof. Juan Manuel
+                Campos Benítez (BUAP).</label>
+            </li>
+            <li>
+              <label><b>Magíster en Filosofía,</b> Pontifica Universidad Católica de Chile.</label>
+              <label>Título: Syllogistic with Privative Terms.</label>
+              <label>Jurado: Prof. Manuel Coreia Machuca, Prof Lorenz Demey (KU-Leuven) & Prof. Pablo Acuña.</label>
+            </li>
+            <li>
+              <label><b>Licenciatura en Filosofía,</b> Benemérita Universidad Autónoma de Puebla, México.</label>
+              <label>Título: Las lógicas ockhamista y peirceana como respuestas al problema de los futuros
+                contingentes.</label>
+              <label>Jurado: Prof. Juan Manuel Campos Benítez.</label>
+            </li>
+          </ul>
         </blockquote>
         <figcaption
           class="flex flex-wrap items-center gap-x-4 gap-y-4 border-t border-gray-900/10 px-6 py-4 sm:flex-nowrap">
-          <img class="h-10 w-10 flex-none rounded-full bg-gray-50"
-            src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80"
-            alt="">
-          <div class="flex-auto">
-            <div class="font-semibold">Brenna Goyette</div>
-            <div class="text-gray-600">brennagoyette@ceduc.org</div>
+          <img class="h-10 w-10 rounded-full bg-gray-50" src="/images/Jos_David_Garca_Cruz.png" alt="">
+          <div>
+            <div class="font-semibold">José David García Cruz</div>
+            <!-- <div class="text-gray-600">@lesliealexander</div> -->
           </div>
         </figcaption>
       </figure>
@@ -295,36 +268,56 @@
         <div class="space-y-8 xl:row-span-2">
           <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
             <blockquote class="text-gray-900">
-              <p>“Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et
-                ipsam.”</p>
+
+              <ul class="list-disc list-inside text-slate-800 ">
+                <li>Presidente del CLUB UNESCO COMPSE.</li>
+                <li>Tutor del Programa para el Desarrollo Profesional Docente de la UNAM.</li>
+                <li>Miembro Fundador de la Red para la Paz de la ANUIES.</li>
+                <li><b>Licenciado en Pedagogía.</b> Facultas de Filosofía y Letras de la UNAM.</li>
+                <li><b>Doctor en Educación.</b> Centro Académico de Educación Superior Ciudad de México y Universidad
+                  Victoria
+                  España, Madrid.</li>
+
+              </ul>
+
             </blockquote>
             <figcaption class="mt-6 flex items-center gap-x-4">
-              <img class="h-10 w-10 rounded-full bg-gray-50"
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt="">
-              <div>
-                <div class="font-semibold">Leslie Alexander</div>
-                <div class="text-gray-600">@lesliealexander</div>
+
+
+              <img class="h-12 w-12 flex-none bg-gray-50" src="/images/Enrique_Renteria_Castro.png" alt="">
+              <div class="flex-auto">
+                <div class="font-semibold">Dr. Enrique Rentería Castro</div>
+                <!-- <div class="text-gray-600">brennagoyette@ceduc.org</div> -->
               </div>
             </figcaption>
           </figure>
 
+          <!--
           <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
             <blockquote class="text-gray-900">
-              <p>“Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et
-                ipsam.”</p>
+              <ul class="list-disc list-inside text-slate-800 ">
+                <li>Licenciado en Derecho por la Escuela Libre de Derecho de Puebla. Cédula Profesional: 3255742</li>
+                <li>Maestro en Administración Pública y Gestión de Calidad por el Instituto de Administración Pública
+                  del Estado de Puebla, Cédula Profecional: 558390</li>
+                <li>Maestro en Constitucional y Amparo por la Escuela Libre de Derecho de Puebla A.C, Cédula Profesinal:
+                  10763634</li>
+                <li>Doctor en Derecho por el ICI</li>
+              </ul>
             </blockquote>
             <figcaption class="mt-6 flex items-center gap-x-4">
               <img class="h-10 w-10 rounded-full bg-gray-50"
                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                 alt="">
               <div>
-                <div class="font-semibold">Leslie Alexander</div>
-                <div class="text-gray-600">@lesliealexander</div>
+                <div class="font-semibold">Sergio Diaz Saenz</div>
               </div>
             </figcaption>
           </figure>
+          -->
+
         </div>
+
+        <!--
         <div class="space-y-8 xl:row-start-1">
           <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
             <blockquote class="text-gray-900">
@@ -342,10 +335,12 @@
             </figcaption>
           </figure>
 
-          <!-- More testimonials... -->
         </div>
+      -->
+
       </div>
       <div class="space-y-8 xl:contents xl:space-y-0">
+        <!--
         <div class="space-y-8 xl:row-start-1">
           <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
             <blockquote class="text-gray-900">
@@ -363,25 +358,28 @@
             </figcaption>
           </figure>
 
-          <!-- More testimonials... -->
         </div>
+      -->
         <div class="space-y-8 xl:row-span-2">
           <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
             <blockquote class="text-gray-900">
-              <p>“Molestias ea earum quos nostrum doloremque sed. Quaerat quasi aut velit incidunt excepturi rerum
-                voluptatem minus harum.”</p>
+              <ul class="list-disc list-inside text-slate-800 ">
+                <li>Licenciado en Derecho por la Escuela Libre de Derecho de Puebla. Cédula Profesional: 3255742</li>
+                <li>Maestro en Administración Pública y Gestión de Calidad por el Instituto de Administración Pública
+                  del Estado de Puebla, Cédula Profecional: 558390</li>
+                <li>Maestro en Constitucional y Amparo por la Escuela Libre de Derecho de Puebla A.C, Cédula Profesinal:
+                  10763634</li>
+                <li>Doctor en Derecho por el ICI</li>
+              </ul>
             </blockquote>
             <figcaption class="mt-6 flex items-center gap-x-4">
-              <img class="h-10 w-10 rounded-full bg-gray-50"
-                src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt="">
+              <img class="h-10 w-10 rounded-full bg-gray-50" src="/images/SERGIO_DIAZ_SAENZ.png" alt="">
               <div>
-                <div class="font-semibold">Leonard Krasner</div>
-                <div class="text-gray-600">@leonardkrasner</div>
+                <div class="font-semibold">Sergio Diaz Saenz</div>
               </div>
             </figcaption>
           </figure>
-
+          <!--
           <figure class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5">
             <blockquote class="text-gray-900">
               <p>“Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et
@@ -397,6 +395,7 @@
               </div>
             </figcaption>
           </figure>
+        -->
         </div>
       </div>
     </div>
@@ -453,88 +452,6 @@
         </div>
       </article>
 
-      <article class="flex flex-col items-start justify-between">
-        <div class="relative w-full">
-          <img
-            src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80"
-            alt="" class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]">
-          <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
-        </div>
-        <div class="max-w-xl">
-          <div class="mt-8 flex items-center gap-x-4 text-xs">
-            <time datetime="2020-03-16" class="text-gray-500">Mar 16, 2020</time>
-            <a href="#"
-              class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a>
-          </div>
-          <div class="group relative">
-            <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-              <a href="#">
-                <span class="absolute inset-0"></span>
-                Boost your conversion rate
-              </a>
-            </h3>
-            <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">Illo sint voluptas. Error voluptates culpa
-              eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat
-              consectetur nulla deserunt vel. Iusto corrupti dicta.</p>
-          </div>
-          <div class="relative mt-8 flex items-center gap-x-4">
-            <img
-              src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt="" class="h-10 w-10 rounded-full bg-gray-100">
-            <div class="text-sm leading-6">
-              <p class="font-semibold text-gray-900">
-                <a href="#">
-                  <span class="absolute inset-0"></span>
-                  Michael Foster
-                </a>
-              </p>
-              <p class="text-gray-600">Co-Founder / CTO</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="flex flex-col items-start justify-between">
-        <div class="relative w-full">
-          <img
-            src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80"
-            alt="" class="aspect-[16/9] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]">
-          <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
-        </div>
-        <div class="max-w-xl">
-          <div class="mt-8 flex items-center gap-x-4 text-xs">
-            <time datetime="2020-03-16" class="text-gray-500">Mar 16, 2020</time>
-            <a href="#"
-              class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Marketing</a>
-          </div>
-          <div class="group relative">
-            <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-              <a href="#">
-                <span class="absolute inset-0"></span>
-                Boost your conversion rate
-              </a>
-            </h3>
-            <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">Illo sint voluptas. Error voluptates culpa
-              eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat
-              consectetur nulla deserunt vel. Iusto corrupti dicta.</p>
-          </div>
-          <div class="relative mt-8 flex items-center gap-x-4">
-            <img
-              src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt="" class="h-10 w-10 rounded-full bg-gray-100">
-            <div class="text-sm leading-6">
-              <p class="font-semibold text-gray-900">
-                <a href="#">
-                  <span class="absolute inset-0"></span>
-                  Michael Foster
-                </a>
-              </p>
-              <p class="text-gray-600">Co-Founder / CTO</p>
-            </div>
-          </div>
-        </div>
-      </article>
-
     </div>
   </div>
 </div>
@@ -548,13 +465,12 @@
       <div class="w-full">
         <div class="w-full flex">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1319.7570170321999!2d-99.03863097172413!3d19.593061243779143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1705423985019!5m2!1ses-419!2smx"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3758.6434465819802!2d-99.2895426208153!3d19.599770427216605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d21befe07fc53b%3A0x4d3b81eefed41d61!2sAv%20la%20Colmena%2C%20Arcoiris%2C%20Cdad.%20Nicol%C3%A1s%20Romero%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1706504936252!5m2!1ses-419!2smx"
             style="border:0;" allowfullscreen="" loading="lazy" class="w-full h-60 rounded-lg mx-auto"
             referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <label class="block text-2xl text-slate-700 font-bold text-center mt-2">Ecatepec</label>
-        <label class="block text-slate-800">Av. Vía Morelos esquina Paseo de los Laureles y Boulevard Ecatepec km.
-          8.5 Col. Laureles 55090 Ecatepec de Morelos, Estado de México, México.</label>
+        <label class="block text-2xl text-slate-700 font-bold text-center mt-2">Nicolas Romero</label>
+        <label class="block text-slate-800">Av la Colmena, Arcoiris, 54475 Cdad. Nicolás Romero, Méx.</label>
       </div>
 
       <div class="w-full">

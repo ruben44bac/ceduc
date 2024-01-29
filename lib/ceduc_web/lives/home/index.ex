@@ -108,30 +108,6 @@ defmodule CeducWeb.HomeLive.Index do
         with_button: false,
         action: nil,
         id: 2
-      },
-      %{
-        img: "/images/maestria.jpg",
-        title: "Maestría",
-        content: "Gana hasta 90% más estudiando una maestría ¡Alcanza tus metas!",
-        with_button: false,
-        action: nil,
-        id: 3
-      },
-      %{
-        img: "/images/doctorado.jpg",
-        title: "Doctorado",
-        content: "Eligen entre nuestras grandes ofertas de doctorado y pasa al siguiente nivel",
-        with_button: false,
-        action: nil,
-        id: 4
-      },
-      %{
-        img: "/images/mas.jpg",
-        title: "Más",
-        content: "Deja tus datos y nosotros te daremos la atención personalizada que requieres",
-        with_button: true,
-        action: "#contact",
-        id: 5
       }
     ]
   end

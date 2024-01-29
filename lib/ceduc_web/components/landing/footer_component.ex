@@ -100,7 +100,9 @@ defmodule CeducWeb.Landing.FooterComponent do
                     </svg>
                   </dt>
                   <dd>
-                    <a class="hover:text-white" href="mailto:hello@ceduc.org">hello@ceduc.org</a>
+                    <a class="hover:text-white" href="mailto:admision@ceduc.org">
+                      admision@ceduc.org
+                    </a>
                   </dd>
                 </div>
               </dl>
