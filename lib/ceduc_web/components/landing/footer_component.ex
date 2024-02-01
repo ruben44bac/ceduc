@@ -7,7 +7,7 @@ defmodule CeducWeb.Landing.FooterComponent do
       <a
         target="_blank"
         class="fixed z-40 bottom-0 right-0 mb-5 mr-5 rounded-full w-12 h-12 bg-green-400 "
-        href="https://api.whatsapp.com/send?phone=525512345678&text=Hola%2C%20estoy%20en%20la%20p%C3%A1gina%20de%20internet%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n"
+        href="https://api.whatsapp.com/send?phone=525574598892&text=Hola%2C%20estoy%20en%20la%20p%C3%A1gina%20de%20internet%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n"
       >
         <img src="/images/whatsapp.png" class="w-12 h-12" />
       </a>
@@ -78,7 +78,7 @@ defmodule CeducWeb.Landing.FooterComponent do
                     </svg>
                   </dt>
                   <dd>
-                    <a class="hover:text-white" href="tel:+1 (555) 234-5678">+1 (555) 234-5678</a>
+                    <a class="hover:text-white" href="tel:5574598892">55 7459 8892</a>
                   </dd>
                 </div>
                 <div class="flex gap-x-4">
@@ -108,7 +108,12 @@ defmodule CeducWeb.Landing.FooterComponent do
               </dl>
             </div>
           </div>
-          <form class="px-6 sm:pb-32 lg:px-8 py-10">
+          <form
+            phx-target={@myself}
+            phx-change="change_form"
+            phx-submit="submit_form"
+            class="px-6 sm:pb-32 lg:px-8 py-10"
+          >
             <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
               <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                 <div>
@@ -118,8 +123,9 @@ defmodule CeducWeb.Landing.FooterComponent do
                   <div class="mt-2.5">
                     <input
                       type="text"
-                      name="first-name"
-                      id="first-name"
+                      value={@contact_form["name"]}
+                      name="name"
+                      id="name"
                       autocomplete="given-name"
                       class="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-secu sm:text-sm sm:leading-6"
                     />
@@ -132,8 +138,9 @@ defmodule CeducWeb.Landing.FooterComponent do
                   <div class="mt-2.5">
                     <input
                       type="text"
-                      name="last-name"
-                      id="last-name"
+                      value={@contact_form["last_name"]}
+                      name="last_name"
+                      id="last_name"
                       autocomplete="family-name"
                       class="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-secu sm:text-sm sm:leading-6"
                     />
@@ -146,6 +153,7 @@ defmodule CeducWeb.Landing.FooterComponent do
                   <div class="mt-2.5">
                     <input
                       type="email"
+                      value={@contact_form["email"]}
                       name="email"
                       id="email"
                       autocomplete="email"
@@ -160,8 +168,9 @@ defmodule CeducWeb.Landing.FooterComponent do
                   <div class="mt-2.5">
                     <input
                       type="tel"
-                      name="phone-number"
-                      id="phone-number"
+                      value={@contact_form["phone_number"]}
+                      name="phone_number"
+                      id="phone_number"
                       autocomplete="tel"
                       class="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-secu sm:text-sm sm:leading-6"
                     />
@@ -232,7 +241,11 @@ defmodule CeducWeb.Landing.FooterComponent do
             </div>
           </nav>
           <div class="mt-10 flex justify-center space-x-10">
-            <a href="#" class="text-gray-400 hover:text-gray-500">
+            <a
+              target="_blank"
+              href="https://www.facebook.com/profile.php?id=61555408870648&mibextid=zOiqff"
+              class="text-gray-400 hover:text-gray-500"
+            >
               <span class="sr-only">Facebook</span>
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path
@@ -242,7 +255,11 @@ defmodule CeducWeb.Landing.FooterComponent do
                 />
               </svg>
             </a>
-            <a href="#" class="text-gray-400 hover:text-gray-500">
+            <a
+              target="_blank"
+              href="https://www.instagram.com/ceduc_mx/"
+              class="text-gray-400 hover:text-gray-500"
+            >
               <span class="sr-only">Instagram</span>
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path
@@ -252,10 +269,19 @@ defmodule CeducWeb.Landing.FooterComponent do
                 />
               </svg>
             </a>
-            <a href="#" class="text-gray-400 hover:text-gray-500">
-              <span class="sr-only">X</span>
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/company/ceduc-mx/"
+              class="text-gray-400 hover:text-gray-500"
+            >
+              <span class="sr-only">LinkeIn</span>
+              <svg
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 448 512"
+              >
+                <path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
               </svg>
             </a>
           </div>
@@ -264,15 +290,60 @@ defmodule CeducWeb.Landing.FooterComponent do
           </p>
         </div>
       </div>
+
+      <%= if @success_contact do %>
+        <div class="w-full fixed inline-flex items-center top-0 left-0 h-screen z-50 backdrop-blur-md bg-black/40">
+          <div class="w-11/12 lg:w-1/2 bg-white p-10 rounded-lg mx-auto">
+            <div class="w-full flex">
+              <lottie-player
+                class="w-48 h-auto mx-auto"
+                src="/images/send.json"
+                background="transparent"
+                speed="1"
+                loop
+                autoplay
+              >
+              </lottie-player>
+            </div>
+            <label class="text-lg block mt-2 mx-auto text-center font-bold">
+              Hemos recibido tus datos.
+            </label>
+            <label class="text-xl block mt-2 mx-auto text-center">
+              Pronto nos pondrémos en contacto contigo.
+            </label>
+            <div class="w-full flex mt-8">
+              <button
+                phx-target={@myself}
+                phx-click="close_contact"
+                class="px-8 rounded py-2 text-sm font-bold text-white bg-prin mx-auto"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </footer>
     """
   end
 
   def mount(socket) do
-    {:ok, socket}
+    {:ok, assign(socket, contact_form: %{}, success_contact: false)}
   end
 
   def update(_attrs, socket) do
     {:ok, socket}
+  end
+
+  def handle_event("change_form", params, socket) do
+    {:noreply, assign(socket, contact_form: params)}
+  end
+
+  def handle_event("submit_form", params, socket) do
+    {:noreply, assign(socket, contact_form: params, success_contact: true)}
+  end
+
+  def handle_event("close_contact", _params, socket) do
+    {:noreply, assign(socket, contact_form: %{}, success_contact: false)}
   end
 end

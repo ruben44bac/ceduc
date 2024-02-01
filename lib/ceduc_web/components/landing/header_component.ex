@@ -49,7 +49,7 @@ defmodule CeducWeb.Landing.HeaderComponent do
               </a>
 
               <a
-                href="tel:5512345678"
+                href="tel:5574598892"
                 class="px-2 hover:bg-prin_1 inline-flex items-center py-2 rounded-lg ml-2"
               >
                 <svg
@@ -60,7 +60,7 @@ defmodule CeducWeb.Landing.HeaderComponent do
                 >
                   <path d="M16 64C16 28.7 44.7 0 80 0H304c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H80c-35.3 0-64-28.7-64-64V64zM224 448a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zM304 64H80V384H304V64z" />
                 </svg>
-                <span class="ml-2">55 1234 5678</span>
+                <span class="ml-2">55 7459 8892</span>
               </a>
             </div>
           </div>

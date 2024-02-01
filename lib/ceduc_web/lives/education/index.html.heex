@@ -8,79 +8,67 @@
       <p class="mt-2 text-lg leading-8 text-gray-600">Da el primer paso para cumplir tus metas.</p>
     </div>
 
-    <%= if @page_title=="Licenciatura" do %>
-      <div class="w-full">
-        <div>
-          <div class="sm:hidden">
-            <label for="tabs" class="sr-only">Filtro</label>
-            <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
-            <select id="tabs" name="tabs"
-              class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
-              <option>Todas</option>
-              <option>Ciencias Sociales</option>
-              <option>Negocios</option>
-              <option>Diseño, Arte y
-                Arquitectura</option>
-            </select>
-          </div>
-          <div class="hidden sm:flex mt-6">
-            <nav class="inline-flex items-center mx-auto space-x-4" aria-label="Tabs">
-              <button phx-click="filter" phx-value-type="0" class={if @list_type==0,
-                do: "bg-prin text-white rounded-md px-3 py-2 text-sm font-medium" ,
-                else: "text-gray-500 hover:text-white hover:bg-prin_1 rounded-md px-3 py-2 text-sm font-medium"
-                }>Todas</button>
-              <button phx-click="filter" phx-value-type="1" class={if @list_type==1,
-                do: "bg-prin text-white rounded-md px-3 py-2 text-sm font-medium" ,
-                else: "text-gray-500 hover:text-white hover:bg-prin_1 rounded-md px-3 py-2 text-sm font-medium"
-                }>Ciencias
-                Sociales</button>
-              <button phx-click="filter" phx-value-type="2" class={if @list_type==2,
-                do: "bg-prin text-white rounded-md px-3 py-2 text-sm font-medium" ,
-                else: "text-gray-500 hover:text-white hover:bg-prin_1 rounded-md px-3 py-2 text-sm font-medium" }
-                aria-current="page">Negocios</button>
-              <button phx-click="filter" phx-value-type="3" class={if @list_type==3,
-                do: "bg-prin text-white rounded-md px-3 py-2 text-sm font-medium" ,
-                else: "text-gray-500 hover:text-white hover:bg-prin_1 rounded-md px-3 py-2 text-sm font-medium"
-                }>Diseño, Arte y
-                Arquitectura</button>
-              <button phx-click="filter" phx-value-type="4" class={if @list_type==4,
-                do: "bg-prin text-white rounded-md px-3 py-2 text-sm font-medium" ,
-                else: "text-gray-500 hover:text-white hover:bg-prin_1 rounded-md px-3 py-2 text-sm font-medium"
-                }>Ingeniería</button>
-            </nav>
-          </div>
+    <%= if @page_title=="Preparatoria" do %>
+      <div class="w-full mt-6 lg:mt-12">
+        <p class="text-center">
+          Bienvenidos a prepa CEDUC, nos enorgullece ofrecer un ambiente educativo vibrante y enriquecedor que fomenta
+          la excelencia, la creatividad y el compromiso con el aprendizaje. ¡Únete a nosotros en este emocionante viaje
+          educativo donde cada estudiante es una historia de éxito en desarrollo!
+        </p>
+        <div class="w-full mt-10 flex">
+          <img src="/images/prepa.jpg" class="w-full lg:w-7/12 mx-auto rounded-lg">
         </div>
-
-      </div>
-
-      <div
-        class="mx-auto grid max-w-2xl auto-rows-fr grid-cols-2 gap-2 md:gap-4 mt-12 md:mx-0 md:max-w-none md:grid-cols-4">
-        <%= for item <- @list do %>
-          <article
-            class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-4 md:px-8 pb-4 md:pb-8 pt-28 md:pt-52">
-            <img src={"/images/#{item.id}.jpg"} alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
-            <div class="absolute inset-0 -z-10 bg-gradient-to-t from-prin via-prin/60"></div>
-            <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
-
-            <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
-              <time datetime="2020-03-16" class="mr-8">Duración | <%= item.years %></time>
-            </div>
-            <h3 class="mt-1 text-lg font-semibold leading-6 text-white">
-              <a href="#">
-                <span class="absolute inset-0"></span>
-                <%= item.name %>
-              </a>
-            </h3>
-          </article>
-
-          <% end %>
-
       </div>
       <% end %>
 
-        <%= if @page_title=="Maestría" do %>
+        <%= if @page_title=="Licenciatura" do %>
+          <div class="w-full">
+            <div>
+              <form phx-change="filter" class="sm:hidden">
+                <label for="tabs" class="sr-only">Filtro</label>
+                <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
+                <select id="tabs" name="type"
+                  class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
+                  <option value="0" selected={@list_type==0}>Todas</option>
+                  <option value="1" selected={@list_type==1}>Ciencias Sociales</option>
+                  <option value="2" selected={@list_type==2}>Negocios</option>
+                  <option value="3" selected={@list_type==3}>Diseño, Arte y
+                    Arquitectura</option>
+                  <option value="4" selected={@list_type==4}>Negocios</option>
+                </select>
+              </form>
+              <div class="hidden sm:flex mt-6">
+                <nav class="inline-flex items-center mx-auto space-x-4" aria-label="Tabs">
+                  <button phx-click="filter" phx-value-type="0" class={if @list_type==0,
+                    do: "bg-prin text-white rounded-md px-3 py-2 text-sm font-medium" ,
+                    else: "text-gray-500 hover:text-white hover:bg-prin_1 rounded-md px-3 py-2 text-sm font-medium"
+                    }>Todas</button>
+                  <button phx-click="filter" phx-value-type="1" class={if @list_type==1,
+                    do: "bg-prin text-white rounded-md px-3 py-2 text-sm font-medium" ,
+                    else: "text-gray-500 hover:text-white hover:bg-prin_1 rounded-md px-3 py-2 text-sm font-medium"
+                    }>Ciencias
+                    Sociales</button>
+                  <button phx-click="filter" phx-value-type="2" class={if @list_type==2,
+                    do: "bg-prin text-white rounded-md px-3 py-2 text-sm font-medium" ,
+                    else: "text-gray-500 hover:text-white hover:bg-prin_1 rounded-md px-3 py-2 text-sm font-medium" }
+                    aria-current="page">Negocios</button>
+                  <button phx-click="filter" phx-value-type="3" class={if @list_type==3,
+                    do: "bg-prin text-white rounded-md px-3 py-2 text-sm font-medium" ,
+                    else: "text-gray-500 hover:text-white hover:bg-prin_1 rounded-md px-3 py-2 text-sm font-medium"
+                    }>Diseño, Arte y
+                    Arquitectura</button>
+                  <button phx-click="filter" phx-value-type="4" class={if @list_type==4,
+                    do: "bg-prin text-white rounded-md px-3 py-2 text-sm font-medium" ,
+                    else: "text-gray-500 hover:text-white hover:bg-prin_1 rounded-md px-3 py-2 text-sm font-medium"
+                    }>Ingeniería</button>
+                </nav>
+              </div>
+            </div>
+
+          </div>
+
           <div
-            class="mx-auto grid max-w-2xl auto-rows-fr grid-cols-1 gap-2 md:gap-4 mt-12 md:mx-0 md:max-w-none md:grid-cols-3">
+            class="mx-auto grid max-w-2xl auto-rows-fr grid-cols-2 gap-2 md:gap-4 mt-12 md:mx-0 md:max-w-none md:grid-cols-4">
             <%= for item <- @list do %>
               <article
                 class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-4 md:px-8 pb-4 md:pb-8 pt-28 md:pt-52">
@@ -104,9 +92,9 @@
           </div>
           <% end %>
 
-            <%= if @page_title=="Doctorado" do %>
+            <%= if @page_title=="Maestría" do %>
               <div
-                class="mx-auto grid max-w-2xl auto-rows-fr grid-cols-1 gap-2 md:gap-4 mt-12 md:mx-0 md:max-w-none md:grid-cols-2">
+                class="mx-auto grid max-w-2xl auto-rows-fr grid-cols-1 gap-2 md:gap-4 mt-12 md:mx-0 md:max-w-none md:grid-cols-3">
                 <%= for item <- @list do %>
                   <article
                     class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-4 md:px-8 pb-4 md:pb-8 pt-28 md:pt-52">
@@ -130,6 +118,34 @@
 
               </div>
               <% end %>
+
+                <%= if @page_title=="Doctorado" do %>
+                  <div
+                    class="mx-auto grid max-w-2xl auto-rows-fr grid-cols-1 gap-2 md:gap-4 mt-12 md:mx-0 md:max-w-none md:grid-cols-2">
+                    <%= for item <- @list do %>
+                      <article
+                        class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl px-4 md:px-8 pb-4 md:pb-8 pt-28 md:pt-52">
+                        <img src={"/images/#{item.id}.jpg"} alt=""
+                          class="absolute inset-0 -z-10 h-full w-full object-cover">
+                        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-prin via-prin/60"></div>
+                        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+
+                        <div
+                          class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
+                          <time datetime="2020-03-16" class="mr-8">Duración | <%= item.years %></time>
+                        </div>
+                        <h3 class="mt-1 text-lg font-semibold leading-6 text-white">
+                          <a href="#">
+                            <span class="absolute inset-0"></span>
+                            <%= item.name %>
+                          </a>
+                        </h3>
+                      </article>
+
+                      <% end %>
+
+                  </div>
+                  <% end %>
   </div>
 </div>
 <.live_component module={CeducWeb.Landing.FooterComponent} id="footer_component" />

@@ -12,7 +12,7 @@
       <div class="w-full md:inline-flex items-top mt-10">
         <div class="w-full md:w-8/12 px-4">
           <%= for item <- @list do %>
-            <div
+            <a href={"/blog/#{item.id}"}
               class="w-full mb-4 border p-4 border-slate-200 inline-flex items-top bg-white rounded-lg cursor-pointer">
               <div class="w-40 h-40 ">
                 <img src={item.img_mini} class="rounded-lg h-full w-full object-cover">
@@ -37,7 +37,7 @@
                   </label>
                 </div>
               </div>
-            </div>
+            </a>
             <% end %>
         </div>
         <div class="w-full md:w-4/12 hidden md:block px-2">

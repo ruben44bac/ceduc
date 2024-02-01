@@ -4,23 +4,20 @@ defmodule CeducWeb.HomeLive.Index do
   """
   use CeducWeb, :live_view
 
+  alias Ceduc.Contexts.Blog.BlogManager
+
   @impl true
   def mount(_params, _session, socket) do
-    licenciaturas = get_licenciatura()
-    masters = get_masters()
-    doctors = get_doctors()
+    blogs = BlogManager.get_lasts()
 
     {:ok,
      assign(socket,
        page_title: "Home",
        banner_position: 1,
        last_banner_position: 0,
-       licenciaturas: licenciaturas,
-       masters: masters,
-       doctors: doctors,
        loading: false,
        section_id: 1,
-       short_list: get_short_list(licenciaturas),
+       blogs: blogs,
        banners: get_banners()
      )}
   end
@@ -34,8 +31,8 @@ defmodule CeducWeb.HomeLive.Index do
         socket.assigns.banner_position + 1
       end
       |> case do
-        0 -> 5
-        6 -> 1
+        0 -> 2
+        3 -> 1
         val -> val
       end
 
@@ -108,203 +105,6 @@ defmodule CeducWeb.HomeLive.Index do
         with_button: false,
         action: nil,
         id: 2
-      }
-    ]
-  end
-
-  defp get_licenciatura do
-    [
-      %{
-        id: 1,
-        name: "Derecho",
-        description: "",
-        years: "4 años",
-        image: "/images/"
-      },
-      %{
-        id: 2,
-        name: "Administración de Empresas",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 3,
-        name: "Pedagogía",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 4,
-        name: "Psicología",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 5,
-        name: "Criminalística",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 6,
-        name: "Mercadotecnia",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 7,
-        name: "Relaciones Internacionales",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 8,
-        name: "Lenguas Inglesas",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 9,
-        name: "Seguridad Pública",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 10,
-        name: "Contabilidad",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 11,
-        name: "Teología",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 12,
-        name: "Teología Yoruba y Ciencias Ocultas",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 13,
-        name: "Ingeniería Civil",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 14,
-        name: "Ingeniería Industrial",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 15,
-        name: "Ingeniería Mecánica",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 16,
-        name: "Arquitectura",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 17,
-        name: "Diseño Gráfico",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 18,
-        name: "Ingeniería en Sistemas Computacionales y Programador",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 19,
-        name: "Diseñador de Videojuegos",
-        description: "",
-        years: "4 años",
-        image: ""
-      }
-    ]
-  end
-
-  defp get_masters do
-    [
-      %{
-        id: 1,
-        name: "Administración de Empresas",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 2,
-        name: "Derecho",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 3,
-        name: "Finanzas",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 4,
-        name: "Administración Pública",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 5,
-        name: "Administración Hospitalaria",
-        description: "",
-        years: "4 años",
-        image: ""
-      }
-    ]
-  end
-
-  defp get_doctors do
-    [
-      %{
-        id: 1,
-        name: "Administración de Empresas",
-        description: "",
-        years: "4 años",
-        image: ""
-      },
-      %{
-        id: 2,
-        name: "Derecho",
-        description: "",
-        years: "4 años",
-        image: ""
       }
     ]
   end

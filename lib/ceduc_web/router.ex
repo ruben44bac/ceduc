@@ -19,6 +19,7 @@ defmodule CeducWeb.Router do
 
     live "/", HomeLive.Index, :index
     live "/blog", BlogLive.Index, :index
+    live "/blog/:id", BlogLive.Detail, :index
     live "/becas", ScholarshipLive.Index, :index
     live "/about", AboutLive.Index, :index
     live "/oferta-academica/:type", EducationLive.Index, :index
