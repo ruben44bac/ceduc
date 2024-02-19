@@ -205,6 +205,46 @@ defmodule CeducWeb.EducationLive.Index do
         years: "3 años",
         image: "",
         type: 3
+      },
+      %{
+        id: 20,
+        name: "Psicopedagogía",
+        description: "",
+        years: "3 años",
+        image: "",
+        type: 1
+      },
+      %{
+        id: 22,
+        name: "Desarrollador inmobiliario",
+        description: "",
+        years: "3 años",
+        image: "",
+        type: 3
+      },
+      %{
+        id: 23,
+        name: "Ingeniería en tecnología digital y telecomunicaciones",
+        description: "",
+        years: "3 años",
+        image: "",
+        type: 4
+      },
+      %{
+        id: 24,
+        name: "Negocios del entretenimiento",
+        description: "",
+        years: "3 años",
+        image: "",
+        type: 2
+      },
+      %{
+        id: 25,
+        name: "Licenciatura en educación",
+        description: "",
+        years: "3 años",
+        image: "",
+        type: 1
       }
     ]
   end
@@ -245,6 +285,13 @@ defmodule CeducWeb.EducationLive.Index do
         description: "",
         years: "3 años",
         image: ""
+      },
+      %{
+        id: 26,
+        name: "Educación Superior",
+        description: "",
+        years: "3 años",
+        image: ""
       }
     ]
   end
@@ -261,6 +308,13 @@ defmodule CeducWeb.EducationLive.Index do
       %{
         id: 2,
         name: "Derecho",
+        description: "",
+        years: "3 años",
+        image: ""
+      },
+      %{
+        id: 26,
+        name: "Educación Superior",
         description: "",
         years: "3 años",
         image: ""
